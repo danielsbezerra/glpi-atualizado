@@ -1,0 +1,68 @@
+> Atualização MariaDB 10.3
+
+$ sudo yum install --downloadonly --downloaddir=/tmp/downloads mariadb mariadb-server
+$ mysqldump -uroot -p --all-databases > /tmp/backup/mysql/database-dump.sql
+$ cp -a /var/lib/mysql /var/lib/mysql.bak
+$ sudo service mysql stop 
+$ sudo yum remove mariadb mariadb-server
+
+
+Adiciona MariaDB.repo (/etc/yum.repos.d/MariaDB.repo)
+$ sudo nano /etc/yum.repos.d/MariaDB.repo
+
+# MariaDB 10.3 CentOS repository list - created 2018-12-12 18:33 UTC
+# http://downloads.mariadb.org/mariadb/repositories/
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.3/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+
+$ sudo yum uninstall MariaDB-client MariaDB-server
+$ sudo yum install MariaDB-client MariaDB-server
+$ sudo systemctl start mariadb
+$ sudo systemctl enable mariadb.service
+
+
+
+
+> Atualização GLPI 9.3.3
+
+Backup GLPI
+$ sudo cp -a /var/www/glpi /var/www/glpi.bak
+
+Pré-requisito: PHP >= 5.6 required, ou seja, instala o 7.3
+sudo yum-config-manager --disable remi-php54
+
+# yum clean all
+# sudo rm -rf /var/cache/yum/
+
+sudo yum -y install epel-release
+sudo yum-config-manager --enable remi-php72
+sudo yum update
+sudo yum install php
+
+sudo yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+
+
+sudo yum -y install epel-release yum-utils
+sudo yum -y install php-cli php-fpm php-mysqlnd php-zip php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json
+sudo yum -y install php-mysql
+
+Instala GLPI
+$ sudo tar -xvzf ~/glpi-9.3.3.tgz
+
+Download and extract https://github.com/glpi-project/glpi/releases/download/9.3.3/glpi-9.3.3.tgz
+
+$ sudo chown -R root:root /var/www/glpi
+$ sudo chmod -R 777 /var/www/glpi
+
+
+MariaDB MyISAM engine
+https://glpi-project.org/DOC/EN/glpi/prerequisite_db.html
+
+> Instalação do Mariabackup
+
+sudo yum install MariaDB-backup
