@@ -16,3 +16,14 @@
     name: "unzip"
     state: installed
   become: yes
+
+- name: Download ngrok
+  get_url:
+    url: https://bin.equinox.io/c/4VmDzA7iaHb/{{ ngrok_file }}
+    dest: /tmp
+
+# Unarchive a file that is already on the remote machine
+- unarchive:
+    src: /tmp/{{ ngrok_file }}
+    dest: /usr/local/bin
+    remote_src: True
