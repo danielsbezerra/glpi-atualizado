@@ -27,3 +27,4 @@
     src: /tmp/{{ ngrok_file }}
     dest: /usr/local/bin
     remote_src: True
+  become: yes
