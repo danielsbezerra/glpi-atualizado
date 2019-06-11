@@ -24,9 +24,9 @@ mariadb_server_id: 1
 mariadb_share_dir: "/usr/share/mysql"
 mariadb_skip_charset_handshake: true
 mariadb_service: "/usr/sbin/mysqld"
-mariadb_dump_file: bd_centraldeservicos.tar.gz
-mariadb_sql_file: banco.sql
-mariadb_sh_bkp_file: backup_mysql.sh
+mariadb_dump_targz_file: db_dump_glpi.tar.gz
+mariadb_dump_file: db_dump_glpi.sql
+mariadb_sh_bkp_file: backup_glpi.sh
 mariadb_permissions_file: permissions.sql
 mariadb_unnecessary_databases:
   - test

@@ -21,22 +21,21 @@
     state: enabled
   become: yes
 
-# Set SELinux Permissive (required by GLPI)
-- name: Execute the command in remote shell; stdout goes to the specified file on the remote.
-  shell: setenforce 0
-  become: yes
+# # Set SELinux Permissive (required by GLPI)
+# - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+#   shell: setenforce 0
+#   ignore_errors: True
+#   become: yes
 
-# Set SELinux configuration
-- name: Execute the command in remote shell; stdout goes to the specified file on the remote.
-  shell: "setsebool -P {{ item }} 1"
-  with_items:
-    - httpd_can_sendmail
-    - httpd_can_network_connect
-    - httpd_can_network_connect_db
-  # notify:
-  #   - restart httpd
-  #   - restart firewalld
-  become: yes
+# # Set SELinux configuration
+# - name: Execute the command in remote shell; stdout goes to the specified file on the remote.
+#   shell: "setsebool -P {{ item }} 1"
+#   with_items:
+#     - httpd_can_sendmail
+#     - httpd_can_network_connect
+#     - httpd_can_network_connect_db
+#   ignore_errors: True
+#   become: yes
 
 - name: Restart the firewalld service to load in the firewall changes
   service: 

@@ -1,5 +1,5 @@
 ---
 - hosts: glpiserver
   roles:
-    - common
+    # - common
     - glpi

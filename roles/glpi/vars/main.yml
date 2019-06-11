@@ -39,4 +39,4 @@ httpd_service: "httpd"
 firewalld_service: "firewalld"
 
 glpi_install_file: "glpi-9.3.3.tgz"
-glpi_custom_install_file: "backup_centraldeservicos.tar.gz"
+glpi_custom_app_bkp: "glpi_bkp.tar.gz"

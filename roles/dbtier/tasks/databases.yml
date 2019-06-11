@@ -10,7 +10,7 @@
   mysql_db:
     name: glpi
     state: import
-    target: "/tmp/{{ mariadb_sql_file }}"
+    target: "/tmp/{{ mariadb_dump_file }}"
     login_user: root
     login_password: "{{ mariadb_root_password }}"
   become: yes
@@ -30,4 +30,14 @@
     login_user: root
     login_password: "{{ mariadb_root_password }}"
     state: absent
+  tags: mariadb
+
+- name: Run the e-mail/notification configuration SQL script
+  mysql_db:
+    name: email-notif-disable
+    state: import
+    target: "/tmp/mail_notif_disable.sql"
+    login_user: root
+    login_password: "{{ mariadb_root_password }}"
+  become: yes
   tags: mariadb

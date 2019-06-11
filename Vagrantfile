@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network", ip: '10.35.10.20'
-  config.vm.network "private_network", ip: '10.35.10.20'
+  config.vm.network "private_network", ip: '10.35.1.13'
 
   # Folder setting
   # NFS requires a host-only network to be created.
@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
   # Provisioning
   # config.vm.provision "shell", path: "install.sh"
   # Run Ansible from the Vagrant Host
+
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "site.yml"
     ansible.inventory_path = "hosts"

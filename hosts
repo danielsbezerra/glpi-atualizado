@@ -1,0 +1,8 @@
+[common]
+10.35.1.13 ansible_user=desenbahia ansible_ssh_pass="agencia de fomento"
+
+[dbserver]
+10.35.1.13 ansible_user=desenbahia ansible_ssh_pass="agencia de fomento"
+
+[glpiserver]
+10.35.1.13 ansible_user=desenbahia ansible_ssh_pass="agencia de fomento"

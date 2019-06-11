@@ -47,6 +47,15 @@
     mode: 0644
   become: yes
 
+- name: Copy e-mail/notification configuration SQL script file to the server
+    copy:
+      src: files/mail_notif_disable.sql
+      dest: /tmp/mail_notif_disable.sql
+      owner: root
+      group: root
+      mode: 0644
+    become: yes
+
 # Generates warning message and always changed output
 - name: Ensure service is started 
   shell: service mysql start
